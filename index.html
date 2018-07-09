@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<meta name="viewport" content="width=device-width, initial-scale=2.0">
 <head>
   <title>2D Overwatch</title>
   <style>
@@ -23,9 +23,9 @@
 </head>
 
 <body>
-  <div id='wrapper' style='width: 100%; height: 100%; overflow: hidden; position: fixed'>
-    <canvas id="canvas" style='position:inherit; '></canvas>
-  </div>
+
+    <canvas id="canvas" style='position:inherit; width:100%; height:100%'</canvas>
+
 
   <script>
     (function() {
@@ -35,8 +35,8 @@
 
     var canvas = document.getElementById("canvas"),
       ctx = canvas.getContext("2d"),
-      width = 9000, //window.innerWidth,
-      height = window.innerHeight / 3, //window.innerHeight,
+      width = document.getElementById("canvas").style.width, //window.innerWidth,
+      height = document.getElementById("canvas").style.height, //window.innerHeight,
       player = {
         x: 0,
         y: height - 15,
@@ -284,24 +284,6 @@ Bullet.prototype.update = function (x, y) {
       update();
     });
 
-    function resize() {
-      // Our canvas must cover full height of screen
-      // regardless of the resolution
-      var height = window.innerHeight;
-
-      // So we need to calculate the proper scaled width
-      // that should work well with every resolution
-      var ratio = canvas.width / canvas.height;
-      var width = height * ratio;
-
-
-
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
-    }
-
-    window.addEventListener('load', resize, false);
-    window.addEventListener('resize', resize, false);
   </script>
 </body>
 
